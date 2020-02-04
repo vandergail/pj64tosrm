@@ -272,7 +272,7 @@ Usage:
 	} else {
 		puts("srm file unspecified, running in srm creation mode");
 
-		if (!files.eep && !files.mpk && !files.sra && !files.fla)
+		if (!*files.eep && !*files.mpk && !*files.sra && !*files.fla)
 			die("no input files.");
 
 		/* pick the first filename */
@@ -316,10 +316,11 @@ Usage:
 		}
 
 		fwrite(srm.eeprom, sizeof(srm.eeprom), 1, fp);
+		fwrite(srm.eeprom2, sizeof(srm.eeprom2), 1, fp);
 		fwrite(srm.mempack, sizeof(srm.mempack), 1, fp);
 		fwrite(srm.sram, sizeof(srm.sram), 1, fp);
 		fwrite(srm.flashram, sizeof(srm.flashram), 1, fp);
-		fwrite(srm.eeprom2, sizeof(srm.eeprom2), 1, fp);
+		
 		fclose(fp);
 	}
 
